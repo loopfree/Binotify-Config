@@ -1,60 +1,60 @@
 version: "3"
 
 services:
-  # catify-app:
-  #   container_name: catify-app
-  #   build:
-  #     context: ./binotify-app/src
-  #   ports:
-  #     - 8080:80
-  #   depends_on:
-  #     - db-catify-app
-  #   volumes:
-  #     - ./binotify-app/src:/var/www/html
-  #   stdin_open: true
-  #   tty: true
+  catify-app:
+    container_name: catify-app
+    build:
+      context: ./binotify-app/src
+    ports:
+      - 8080:80
+    depends_on:
+      - db-catify-app
+    volumes:
+      - ./binotify-app/src:/var/www/html
+    stdin_open: true
+    tty: true
 
-  # db-catify-app:
-  #   image: postgres:15.0
-  #   container_name: db-catify-app
-  #   ports:
-  #     - 6001:5432
-  #   environment:
-  #     POSTGRES_DB: catifyapp
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: admin
-  #   volumes:
-  #     - ./binotify-config/data/catify-app.sql:/docker-entrypoint-initdb.d/main.sql
+  db-catify-app:
+    image: postgres:15.0
+    container_name: db-catify-app
+    ports:
+      - 6001:5432
+    environment:
+      POSTGRES_DB: catifyapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - ./binotify-config/data/catify-app.sql:/docker-entrypoint-initdb.d/main.sql
   
-  # catify-premium-app:
-  #   container_name: catify-premium-app
-  #   build:
-  #     context: ./binotify-premium-app
-  #   ports:
-  #     - "5173:5173"
-  #   stdin_open: true
-  #   tty: true
+  catify-premium-app:
+    container_name: catify-premium-app
+    build:
+      context: ./binotify-premium-app
+    ports:
+      - 5173:5173
+    stdin_open: true
+    tty: true
 
-  # catify-rest:
-  #   container_name: catify-rest
-  #   build:
-  #     context: ./binotify-rest
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - db-catify-rest
+  catify-rest:
+    container_name: catify-rest
+    build:
+      context: ./binotify-rest
+    ports:
+      - 3000:3000
+    depends_on:
+      - db-catify-rest
 
-  # db-catify-rest:
-  #   image: postgres:15.0
-  #   container_name: db-catify-rest
-  #   ports:
-  #     - 6002:5432
-  #   environment:
-  #     POSTGRES_DB: catifyrest
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: admin
-  #   volumes:
-  #     - ./binotify-config/data/catify-rest.sql:/docker-entrypoint-initdb.d/main.sql
+  db-catify-rest:
+    image: postgres:15.0
+    container_name: db-catify-rest
+    ports:
+      - 6002:5432
+    environment:
+      POSTGRES_DB: catifyrest
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - ./binotify-config/data/catify-rest.sql:/docker-entrypoint-initdb.d/main.sql
 
   catify-soap:
     container_name: catify-soap
