@@ -56,7 +56,7 @@ ALTER TABLE public."Album" OWNER TO postgres;
 
 CREATE SEQUENCE public."Album_album_id_seq"
     AS integer
-    START WITH 5
+    START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -97,7 +97,7 @@ ALTER TABLE public."Song" OWNER TO postgres;
 
 CREATE SEQUENCE public."Song_song_id_seq"
     AS integer
-    START WITH 11
+    START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -147,7 +147,7 @@ ALTER TABLE public."User" OWNER TO postgres;
 
 CREATE SEQUENCE public."User_user_id_seq"
     AS integer
-    START WITH 3
+    START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -236,21 +236,21 @@ COPY public."User" (user_id, email, password, username, is_admin) FROM stdin;
 -- Name: Album_album_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Album_album_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."Album_album_id_seq"', 5, false);
 
 
 --
 -- Name: Song_song_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Song_song_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."Song_song_id_seq"', 11, false);
 
 
 --
 -- Name: User_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."User_user_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."User_user_id_seq"', 3, false);
 
 
 --

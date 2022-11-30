@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.0
+-- Dumped from database version 15.0 (Debian 15.0-1.pgdg110+1)
 -- Dumped by pg_dump version 15.0
 
 SET statement_timeout = 0;
@@ -35,6 +35,28 @@ CREATE TABLE public."Song" (
 ALTER TABLE public."Song" OWNER TO postgres;
 
 --
+-- Name: Song_song_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Song_song_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Song_song_id_seq" OWNER TO postgres;
+
+--
+-- Name: Song_song_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Song_song_id_seq" OWNED BY public."Song".song_id;
+
+
+--
 -- Name: User; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -51,6 +73,42 @@ CREATE TABLE public."User" (
 ALTER TABLE public."User" OWNER TO postgres;
 
 --
+-- Name: User_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."User_user_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."User_user_id_seq" OWNER TO postgres;
+
+--
+-- Name: User_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."User_user_id_seq" OWNED BY public."User".user_id;
+
+
+--
+-- Name: Song song_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Song" ALTER COLUMN song_id SET DEFAULT nextval('public."Song_song_id_seq"'::regclass);
+
+
+--
+-- Name: User user_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."User" ALTER COLUMN user_id SET DEFAULT nextval('public."User_user_id_seq"'::regclass);
+
+
+--
 -- Data for Name: Song; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -63,7 +121,22 @@ COPY public."Song" (song_id, judul, penyanyi_id, audio_path) FROM stdin;
 --
 
 COPY public."User" (user_id, email, password, username, name, isadmin) FROM stdin;
+1	bmin@mail.com                                                                                                                                                                                                                                                   	b                                                                                                                                                                                                                                                               	bmin                                                                                                                                                                                                                                                            	bmin                                                                                                                                                                                                                                                            	t
 \.
+
+
+--
+-- Name: Song_song_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Song_song_id_seq"', 1, false);
+
+
+--
+-- Name: User_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."User_user_id_seq"', 2, false);
 
 
 --
@@ -94,8 +167,3 @@ ALTER TABLE ONLY public."Song"
 -- PostgreSQL database dump complete
 --
 
---
--- Manual Addition of admin
---
-
-INSERT INTO public."User" VALUES (428, 'bmin@mail.com', 'b', 'bmin', 'bmin', 't');
