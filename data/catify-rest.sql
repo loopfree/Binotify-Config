@@ -94,3 +94,8 @@ ALTER TABLE ONLY public."Song"
 -- PostgreSQL database dump complete
 --
 
+--
+-- Manual Addition of admin
+--
+
+INSERT INTO public."User" VALUES (428, 'bmin@mail.com', 'b', 'bmin', 'bmin', 't');
