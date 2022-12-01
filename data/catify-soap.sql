@@ -52,6 +52,7 @@ CREATE TABLE `subscription` (
   `creator_id` int NOT NULL,
   `subscriber_id` int NOT NULL,
   `status` enum('PENDING','ACCEPTED','REJECTED') NOT NULL DEFAULT 'PENDING',
+  `is_polled` boolean NOT NULL DEFAULT false,
   PRIMARY KEY (`creator_id`,`subscriber_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
