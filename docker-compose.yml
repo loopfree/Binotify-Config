@@ -7,6 +7,8 @@ services:
       context: ./binotify-app/src
     ports:
       - 8080:80
+    environment:
+      API_KEY: APInyaPlain
     depends_on:
       - db-catify-app
     volumes:
@@ -41,6 +43,8 @@ services:
       context: ./binotify-rest
     ports:
       - 3000:3000
+    environment:
+      API_KEY: APInyaREST
     depends_on:
       - db-catify-rest
 
@@ -62,10 +66,11 @@ services:
       context: ./binotify-soap-service/ws
     ports:
       - 8042:8042
+    environment:
+      API_KEY_REST: APInyaREST
+      API_KEY_PLAIN: APInyaPlain
     depends_on:
       - db-catify-soap
-    volumes:
-      - ./binotify-soap-service/ws:/app
 
   db-catify-soap:
     image: mysql:8.0.31
