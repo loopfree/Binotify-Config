@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.0
+-- Dumped from database version 15.0 (Debian 15.0-1.pgdg110+1)
 -- Dumped by pg_dump version 15.0
 
 SET statement_timeout = 0;
@@ -219,6 +219,8 @@ COPY public."Song" (song_id, judul, penyanyi, tanggal_terbit, genre, duration, a
 --
 
 COPY public."Subscription" (creator_id, subscriber_id, status) FROM stdin;
+2	1	ACCEPTED
+3	1	PENDING
 \.
 
 

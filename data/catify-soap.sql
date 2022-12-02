@@ -29,7 +29,7 @@ CREATE TABLE `logging` (
   `endpoint` char(255) NOT NULL,
   `requested_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=325 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE `subscription` (
   `creator_id` int NOT NULL,
   `subscriber_id` int NOT NULL,
   `status` enum('PENDING','ACCEPTED','REJECTED') NOT NULL DEFAULT 'PENDING',
-  `is_polled` boolean NOT NULL DEFAULT false,
+  `is_polled` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`creator_id`,`subscriber_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -63,6 +63,7 @@ CREATE TABLE `subscription` (
 
 LOCK TABLES `subscription` WRITE;
 /*!40000 ALTER TABLE `subscription` DISABLE KEYS */;
+INSERT INTO `subscription` VALUES (2,1,'PENDING',1),(3,1,'PENDING',1);
 /*!40000 ALTER TABLE `subscription` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-18 20:17:18
+-- Dump completed on 2022-12-02 11:19:05

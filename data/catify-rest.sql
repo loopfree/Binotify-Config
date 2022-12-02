@@ -113,6 +113,8 @@ ALTER TABLE ONLY public."User" ALTER COLUMN user_id SET DEFAULT nextval('public.
 --
 
 COPY public."Song" (song_id, judul, penyanyi_id, audio_path) FROM stdin;
+1	Heal The World                                                  	2	/assets/audio/Heal The World.mp3                                                                                                                                                                                                                                
+2	You Are Not Alone                                               	2	/assets/audio/You Are Not Alone.mp3                                                                                                                                                                                                                             
 \.
 
 
@@ -121,7 +123,9 @@ COPY public."Song" (song_id, judul, penyanyi_id, audio_path) FROM stdin;
 --
 
 COPY public."User" (user_id, email, password, username, name, isadmin) FROM stdin;
-1	bmin@mail.com                                                                                                                                                                                                                                                   	b                                                                                                                                                                                                                                                               	bmin                                                                                                                                                                                                                                                            	bmin                                                                                                                                                                                                                                                            	t
+1	bmin@mail.com                                                                                                                                                                                                                                                   	aeolr                                                                                                                                                                                                                                                           	bmin                                                                                                                                                                                                                                                            	bmin                                                                                                                                                                                                                                                            	t
+3	penyanyi2@gmail.com                                                                                                                                                                                                                                             	pfp|es\\x7Fp:                                                                                                                                                                                                                                                    	penyanyi2                                                                                                                                                                                                                                                       	penyanyi2                                                                                                                                                                                                                                                       	f
+2	penyanyi1@gmail.com                                                                                                                                                                                                                                             	pfp|esp9                                                                                                                                                                                                                                                       	penyanyi1                                                                                                                                                                                                                                                       	Michael Jackson                                                                                                                                                                                                                                                 	f
 \.
 
 
@@ -129,14 +133,14 @@ COPY public."User" (user_id, email, password, username, name, isadmin) FROM stdi
 -- Name: Song_song_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Song_song_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."Song_song_id_seq"', 2, true);
 
 
 --
 -- Name: User_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."User_user_id_seq"', 2, false);
+SELECT pg_catalog.setval('public."User_user_id_seq"', 3, true);
 
 
 --
