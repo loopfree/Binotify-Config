@@ -4,7 +4,7 @@ services:
   catify-app:
     container_name: catify-app
     build:
-      context: ./binotify-app/src
+      context: ./../binotify-app/src
     ports:
       - 8080:80
     environment:
@@ -12,7 +12,7 @@ services:
     depends_on:
       - db-catify-app
     volumes:
-      - ./binotify-app/src:/var/www/html
+      - ./../binotify-app/src:/var/www/html
     stdin_open: true
     tty: true
 
@@ -26,12 +26,12 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
     volumes:
-      - ./binotify-config/data/catify-app.sql:/docker-entrypoint-initdb.d/main.sql
+      - ./data/catify-app.sql:/docker-entrypoint-initdb.d/main.sql
   
   catify-premium-app:
     container_name: catify-premium-app
     build:
-      context: ./binotify-premium-app
+      context: ./../binotify-premium-app
     ports:
       - 5173:5173
     stdin_open: true
@@ -40,7 +40,7 @@ services:
   catify-rest:
     container_name: catify-rest
     build:
-      context: ./binotify-rest
+      context: ./../binotify-rest
     ports:
       - 3000:3000
     environment:
@@ -58,12 +58,12 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
     volumes:
-      - ./binotify-config/data/catify-rest.sql:/docker-entrypoint-initdb.d/main.sql
+      - ./data/catify-rest.sql:/docker-entrypoint-initdb.d/main.sql
 
   catify-soap:
     container_name: catify-soap
     build:
-      context: ./binotify-soap-service/ws
+      context: ./../binotify-soap-service/ws
     ports:
       - 8042:8042
     environment:
@@ -81,4 +81,4 @@ services:
       MYSQL_DATABASE: catifysoap
       MYSQL_ROOT_PASSWORD: admin
     volumes:
-      - ./binotify-config/data/catify-soap.sql:/docker-entrypoint-initdb.d/main.sql
+      - ./data/catify-soap.sql:/docker-entrypoint-initdb.d/main.sql
